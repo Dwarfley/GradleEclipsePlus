@@ -2,7 +2,7 @@
 plugins {
 	id 'java-gradle-plugin'
 	id 'com.gradle.plugin-publish' version '1.2.1'
-	id 'io.github.dwarfley.versioncompanion' version '0.+'
+	id 'io.github.dwarfley.version-companion' version '0.+'
 	id 'io.github.dwarfley.eclipse-plus' version '0.+'
 }
 
