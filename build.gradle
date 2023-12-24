@@ -15,7 +15,7 @@ gradlePlugin {
 	
 	plugins {
 		eclipsePlusPlugin {
-			id = 'io.github.dwarfley.eclipseplus'
+			id = 'io.github.dwarfley.eclipse-plus'
 			displayName = 'EclipsePlus'
 			description = 'The eclipse plus plugin extends the functionality of the standard eclipse plugin.'
 			tags.set(['eclipse', 'ide'])
