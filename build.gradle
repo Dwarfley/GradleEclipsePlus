@@ -1,0 +1,44 @@
+
+plugins {
+	id 'eclipse'
+	id 'java-gradle-plugin'
+	id 'com.gradle.plugin-publish' version '1.2.1'
+}
+
+group  = 'io.github.dwarfley'
+
+gradlePlugin {
+	
+	website = 'https://github.com/Dwarfley/GradleEclipsePlus'
+	vcsUrl = 'https://github.com/Dwarfley/GradleEclipsePlus'
+	
+	plugins {
+		eclipsePlusPlugin {
+			id = 'io.github.dwarfley.eclipseplus'
+			displayName = 'EclipsePlus'
+			description = 'A gradle plugin that extends the functionality of the standard eclipse plugin.'
+			tags.set(['eclipse', 'ide'])
+			implementationClass = 'io.github.dwarfley.gradle.eclipseplus.EclipsePlusPlugin'
+		}
+	}
+	
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testImplementation libs.junit
+}
+
+tasks.named('test') {
+	
+	useJUnitPlatform()
+	
+	testLogging {
+		events "failed"
+		exceptionFormat "full"
+	}
+	
+}
