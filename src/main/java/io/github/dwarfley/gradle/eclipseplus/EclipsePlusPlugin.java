@@ -1,5 +1,7 @@
 package io.github.dwarfley.gradle.eclipseplus;
 
+import static java.nio.file.StandardOpenOption.*;
+
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -10,6 +12,7 @@ import org.gradle.plugins.ide.eclipse.EclipsePlugin;
 public class EclipsePlusPlugin implements Plugin<Project> {
 	
 	private Path mSettingsDir;
+	private Path mSettingsFile;
 	private Path mBinDir;
 	
 	private final Action<Task> mCreateAction = pTask -> {
@@ -20,6 +23,16 @@ public class EclipsePlusPlugin implements Plugin<Project> {
 			}catch(IOException lEx){
 				throw new GradleException("Failed to create settings directory!");
 			}
+		}
+		
+		String lText = "";
+		lText += "eclipse.preferences.version=1" + "\n";
+		lText += "encoding/<project>=UTF-8" + "\n";
+		
+		try{
+			Files.writeString(mSettingsFile, lText, CREATE, TRUNCATE_EXISTING, WRITE);
+		}catch(IOException lEx){
+			throw new GradleException("Failed to create settings file!");
 		}
 		
 	};
@@ -52,6 +65,7 @@ public class EclipsePlusPlugin implements Plugin<Project> {
 		Path lRootDir = pProject.getRootDir().toPath().toAbsolutePath();
 		
 		mSettingsDir = lRootDir.resolve(".settings/");
+		mSettingsFile = mSettingsDir.resolve("org.eclipse.core.resources.prefs");
 		mBinDir = lRootDir.resolve("bin/");
 		
 		pProject.getTasks().named("eclipse").configure(pTask -> {
