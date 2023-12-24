@@ -5,7 +5,7 @@ plugins {
 	id 'com.gradle.plugin-publish' version '1.2.1'
 }
 
-group  = 'io.github.dwarfley'
+group = 'io.github.dwarfley'
 version = '0.1.0-dev'
 
 gradlePlugin {
