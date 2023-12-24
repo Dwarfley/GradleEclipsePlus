@@ -14,4 +14,4 @@ plugins {
 ## Features
 
 - Deletes the `bin/` and `.settings/` folders when executing the cleanEclipse task.
-- Creates the `.settings/org.eclipse.core.resources.prefs` file and sets `UTF-8` as the explicit encoding set.
+- Creates the `.settings/org.eclipse.core.resources.prefs` file and sets `UTF-8` as the explicit encoding set when executing the eclipse task.
